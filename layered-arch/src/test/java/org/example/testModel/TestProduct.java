@@ -32,8 +32,25 @@ public class TestProduct {
     @Test
     void TestSetName()
     {
-
+        product1.setName("bike");
+        assertEquals("bike",product1.getName());
     }
 
+    @Test
+    void TestSetPrice(){
+        product1.setPrice(1000);
+        assertEquals(1000,product1.getPrice());
+    }
+
+    @Test
+    void TestSetPriceNegative(){
+        assertThrows(IllegalArgumentException.class,()->product1.setPrice(-1000));
+    }
+
+    @Test
+    void TestSetQunatity(){
+        product1.setQuantity(8);
+        assertEquals(8,product1.getQuantity());
+    }
 
 }
