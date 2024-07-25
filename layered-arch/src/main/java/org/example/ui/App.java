@@ -1,6 +1,8 @@
 package org.example.ui;
 
 
+import java.util.InputMismatchException;
+
 public class App {
     public static void main( String[] args )
     {
@@ -10,7 +12,11 @@ public class App {
         int response = MenuUI.accessMenu();
 
         if (response == 1) {
-            menuUI.addProducts();
+            try{
+                menuUI.addProducts();
+            }catch (InputMismatchException e){
+                System.out.println(e.getMessage());
+            }
         } else if (response == 2) {
             menuUI.viewProducts();
         } else if (response ==3) {
@@ -19,25 +25,9 @@ public class App {
             menuUI.deleteProduct();
         } else if (response == 5) {
             break;
-        } else{
-            try{
-                InvalidOptionChoosenException invalidOptionChoosenException = new InvalidOptionChoosenException("Invalid options entered");
-                throw invalidOptionChoosenException;
-            }catch (InvalidOptionChoosenException e){
-                System.out.println(e.getMessage());
-            }
-        }
+        } else System.out.println("Invalid input");
         }
     }
 }
 
-class InvalidOptionChoosenException extends RuntimeException{
 
-    String message;
-
-    InvalidOptionChoosenException(String message){
-        super(message);
-    }
-
-
-}

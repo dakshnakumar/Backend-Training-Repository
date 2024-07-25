@@ -47,4 +47,12 @@ public class ProductServiceImpl implements ProductService{
     public void updateProducts(String name,String productIdNumber){
         productRepository.updateProductsToDB(name,productIdNumber);
     }
+
+    public void updateProducts(double price,String productIdNumber){
+        productRepository.updateProductsToDB(price,productIdNumber);
+    }
+
+    public void updateProducts(int quantity,String productIdNumber){
+        productRepository.updateProductsToDB(quantity,productIdNumber);
+    }
 }

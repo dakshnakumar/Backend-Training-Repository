@@ -132,4 +132,36 @@ public class ProductRepositoryImpl implements ProductRepository{
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    public boolean updateProductsToDB(double price,String productIdWantsToChange){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","root","test@123");
+            System.out.println("connection created");
+            Statement statement = connection.createStatement();
+            System.out.println("Statement created");
+            String sql = "UPDATE products SET price='"+price+"' WHERE id='"+productIdWantsToChange+"';";
+            int resultSet = statement.executeUpdate(sql);
+            return resultSet>0;
+
+        } catch (ClassNotFoundException | SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    public boolean updateProductsToDB(int quantity,String productIdWantsToChange){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/test","root","test@123");
+            System.out.println("connection created");
+            Statement statement = connection.createStatement();
+            System.out.println("Statement created");
+            String sql = "UPDATE products SET quantity='"+quantity+"' WHERE id='"+productIdWantsToChange+"';";
+            int resultSet = statement.executeUpdate(sql);
+            return resultSet>0;
+
+        } catch (ClassNotFoundException | SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }

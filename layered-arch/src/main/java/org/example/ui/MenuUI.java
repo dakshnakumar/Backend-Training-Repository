@@ -4,6 +4,7 @@ import org.example.model.Product;
 import org.example.service.ProductService;
 import org.example.service.ProductServiceImpl;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,24 +25,29 @@ public class MenuUI {
     }
 
     public void addProducts(){
+        try {
+            System.out.println("Enter the product id");
+            String id = input.nextLine();
+            System.out.println("Enter the product name");
+            String name = input.nextLine();
+            System.out.println("Enter the product price");
+            double price = input.nextDouble();
 
-        System.out.println("Enter the product id");
-        String id = input.nextLine();
-        System.out.println("Enter the product name");
-        String name = input.nextLine();
-        System.out.println("Enter the product price");
-        double price = input.nextDouble();
-        System.out.println("Enter the quantity");
-        int qunatity = input.nextInt();
+            System.out.println("Enter the quantity");
+            int qunatity = input.nextInt();
 
-        Product product = new Product(id,name,price,qunatity);
+            Product product = new Product(id, name, price, qunatity);
 
-       boolean isAdded =  productServiceImpl.addProduct(product);
+            boolean isAdded = productServiceImpl.addProduct(product);
 
-       if (isAdded){
-           System.out.println("Product successfully added");
-       }else System.out.println("product doesn't added to the cart");
+            if (isAdded) {
+                System.out.println("Product successfully added");
+            } else System.out.println("product doesn't added to the cart");
 
+        }catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+            input.nextLine();
+        }
     }
 
     public void viewProducts(){
@@ -79,10 +85,22 @@ public class MenuUI {
         int update = input.nextInt();
         input.nextLine();
         switch (update){
+
             case 2:
                 System.out.println("Enter the updated name");
                 String name = input.nextLine();
                 productServiceImpl.updateProducts(name,id);
+
+            case 3:
+                System.out.println("Enter the updated price");
+                double price = input.nextInt();
+                productServiceImpl.updateProducts(price,id);
+
+            case 4:
+                System.out.println("Enter the updated qunatity");
+                int quantity = input.nextInt();
+                productServiceImpl.updateProducts(quantity,id);
+
         }
 
     }
