@@ -1,4 +1,4 @@
-package org.example.model;
+package org.demo.model;
 
 import java.util.InputMismatchException;
 

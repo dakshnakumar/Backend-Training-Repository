@@ -1,4 +1,4 @@
-package org.example.lab1TestCase.part1;
+package assignments.lab1.qn1.part1;
 
 import org.example.lab1.qn1.part1.AddMethod;
 import org.junit.jupiter.api.BeforeEach;
