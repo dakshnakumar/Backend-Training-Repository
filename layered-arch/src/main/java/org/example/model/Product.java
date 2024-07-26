@@ -10,18 +10,18 @@ public class Product {
     int quantity;
 
     public Product(String id,String name , double price , int quantity){
-        if(price < 0 || quantity <= 0) {
-            System.out.println("Price cannot be less than 0");
-            throw new RuntimeException("Price or quantity cannot be less than zero or equal to zero");
-        }
-        try{
+//        if(price < 0 || quantity <= 0) {
+//            System.out.println("Price cannot be less than 0");
+//            throw new RuntimeException("Price or quantity cannot be less than zero or equal to zero");
+//        }
+//        try{
             this.id = id;
             this.name = name;
             this.price = price;
             this.quantity = quantity;
-        } catch (RuntimeException e){
-            throw new InputMismatchException(e.getMessage());
-        }
+//        } catch (RuntimeException e){
+//            throw new InputMismatchException(e.getMessage());
+//        }
     }
 
     public void setId(String id) {
